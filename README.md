@@ -1,3 +1,7 @@
+Uma lista de tarefas simples feita com Tailwind CSS, onde o foco além de praticar a lógica de uma lista de tarefas, foi a introdução ao Tailwind CSS.
+
+A simple To-Do list made with Tailwind CSS, where i practiced the logic of a To-Do list but also started to learn Tailwind CSS
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
