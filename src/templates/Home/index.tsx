@@ -8,7 +8,7 @@ function Home() {
 
   useEffect(() => {
     const tasks = localStorage.getItem("tasks");
-    if (tasks.length < 1) return;
+    if (tasks == null) return;
     setTasks(JSON.parse(tasks));
   }, []);
 
