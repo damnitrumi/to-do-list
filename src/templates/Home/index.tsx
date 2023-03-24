@@ -1,10 +1,16 @@
 import { Task } from "components/Task/Task";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Form } from "components/Form/Form";
 
 function Home() {
   const [textValue, setTextValue] = useState("");
   const [tasks, setTasks] = useState([]);
+
+  useEffect(() => {
+    const tasks = localStorage.getItem("tasks");
+    if (tasks.length < 1) return;
+    setTasks(JSON.parse(tasks));
+  }, []);
 
   const handleOnChange = (e) => {
     setTextValue(e.target.value);
@@ -13,8 +19,9 @@ function Home() {
   const createTask = () => {
     if (!textValue) return;
     const availableTasks = [...tasks];
-    availableTasks.push({ task: textValue });
+    availableTasks.push({ task: textValue, checked: false });
     setTasks(availableTasks);
+    localStorage.setItem("tasks", JSON.stringify(availableTasks));
     setTextValue("");
   };
 
@@ -22,12 +29,21 @@ function Home() {
     if (!editValue) return;
     const availableTasks = [...tasks];
     availableTasks[index].task = editValue;
+    localStorage.setItem("tasks", JSON.stringify(availableTasks));
+    setTasks(availableTasks);
+  };
+
+  const checkTask = (index) => {
+    const availableTasks = [...tasks];
+    availableTasks[index].checked = !availableTasks[index].checked;
+    localStorage.setItem("tasks", JSON.stringify(availableTasks));
     setTasks(availableTasks);
   };
 
   const deleteTask = (index) => {
     const availableTasks = [...tasks];
     availableTasks.splice(index, 1);
+    localStorage.setItem("tasks", JSON.stringify(availableTasks));
     setTasks(availableTasks);
   };
 
@@ -45,7 +61,9 @@ function Home() {
             key={i}
             index={i}
             task={el.task}
+            checked={el.checked}
             editTask={editTask}
+            checkTask={() => checkTask(i)}
             deleteTask={() => deleteTask(i)}
           />
         );

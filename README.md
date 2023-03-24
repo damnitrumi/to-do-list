@@ -1,6 +1,8 @@
 Uma lista de tarefas simples feita com Tailwind CSS, onde o foco além de praticar a lógica de uma lista de tarefas, foi a introdução ao Tailwind CSS.
+24/03/2023: Agora as tasks são salvas em Local Storage
 
 A simple To-Do list made with Tailwind CSS, where i practiced the logic of a To-Do list but also started to learn Tailwind CSS
+24/03/2023: Now all tasks are saved in Local Storage
 
 Deploy: https://to-do-list-damnitrumi.vercel.app/
 

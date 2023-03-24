@@ -5,11 +5,20 @@ import { useState } from "react";
 type TaskProps = {
   index: number;
   task: string;
+  checked: boolean;
   editTask: (index, editValue) => void;
+  checkTask: () => void;
   deleteTask: () => void;
 };
 
-export const Task = ({ index, task, editTask, deleteTask }: TaskProps) => {
+export const Task = ({
+  index,
+  task,
+  checked,
+  editTask,
+  checkTask,
+  deleteTask,
+}: TaskProps) => {
   const [editValue, setEditValue] = useState("");
   const [editIsVisible, setEditIsVisible] = useState(false);
   const [deleteIsVisible, setDeleteIsVisible] = useState(false);
@@ -27,7 +36,12 @@ export const Task = ({ index, task, editTask, deleteTask }: TaskProps) => {
   return (
     <div className="min-h-[50px] flex flex-col justify-between w-full p-4 bg-gray-200 mb-2 rounded lg:flex-row ">
       <div className="flex items-center gap-3 pl-2">
-        <input type="checkbox" className="peer" />
+        <input
+          type="checkbox"
+          className="peer"
+          checked={checked}
+          onChange={checkTask}
+        />
         <p className="text-black peer-checked:line-through peer-checked:text-blue-600">
           {task}
         </p>
